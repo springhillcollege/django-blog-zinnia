@@ -17,6 +17,8 @@ ALLOW_FUTURE = getattr(settings, 'ZINNIA_ALLOW_FUTURE', True)
 
 ENTRY_BASE_MODEL = getattr(settings, 'ZINNIA_ENTRY_BASE_MODEL',
                            'zinnia.models_bases.entry.AbstractEntry')
+ENTRYFEED_BASE_MODEL = getattr(settings, 'ZINNIA_ENTRYFEED_BASE_MODEL',
+                           'zinnia.feeds.EntryFeed')
 
 ENTRY_DETAIL_TEMPLATES = getattr(
     settings, 'ZINNIA_ENTRY_DETAIL_TEMPLATES', [])

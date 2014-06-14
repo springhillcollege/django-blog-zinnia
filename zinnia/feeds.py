@@ -33,6 +33,9 @@ from zinnia.settings import FEEDS_MAX_ITEMS
 from zinnia.views.categories import get_category_or_404
 from zinnia.templatetags.zinnia_tags import get_gravatar
 
+"""Entry model for ZinniaFeed"""
+from zinnia.settings import ENTRYFEED_BASE_MODEL
+from zinnia.models_bases import load_model_class
 
 class ZinniaFeed(Feed):
     """
@@ -154,7 +157,7 @@ class EntryFeed(ZinniaFeed):
         return 'image/jpeg'
 
 
-class LatestEntries(EntryFeed):
+class LatestEntries(load_model_class(ENTRYFEED_BASE_MODEL)):
     """
     Feed for the latest entries.
     """
@@ -184,7 +187,7 @@ class LatestEntries(EntryFeed):
         return _('The latest entries for the site %s') % self.site.name
 
 
-class CategoryEntries(EntryFeed):
+class CategoryEntries(load_model_class(ENTRYFEED_BASE_MODEL)):
     """
     Feed filtered by a category.
     """
@@ -220,7 +223,7 @@ class CategoryEntries(EntryFeed):
         return _('The latest entries for the category %s') % obj.title
 
 
-class AuthorEntries(EntryFeed):
+class AuthorEntries(load_model_class(ENTRYFEED_BASE_MODEL)):
     """
     Feed filtered by an author.
     """
@@ -257,7 +260,7 @@ class AuthorEntries(EntryFeed):
         return _('The latest entries by %s') % obj.__str__()
 
 
-class TagEntries(EntryFeed):
+class TagEntries(load_model_class(ENTRYFEED_BASE_MODEL)):
     """
     Feed filtered by a tag.
     """
@@ -294,7 +297,7 @@ class TagEntries(EntryFeed):
         return _('The latest entries for the tag %s') % obj.name
 
 
-class SearchEntries(EntryFeed):
+class SearchEntries(load_model_class(ENTRYFEED_BASE_MODEL)):
     """
     Feed filtered by a search pattern.
     """
